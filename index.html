@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="createjs.min.js"></script>
+    <script src="js/CustomMethods.js"></script>
+    <script src="js/MainGame.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/SolveCreditsComponent.js"></script>
+    <script src="js/PaginationComponent.js"></script>
+    <script src="js/AbstractPuzzleGame.js"></script>
+    <script src="js/AbstractPuzzleBoard.js"></script>
+    <script src="js/AbstractPuzzleField.js"></script>
+    <script src="js/ShapeButton.js"></script>
+    <script src="js/ImageButton.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="js/SwitcherGame.js"></script>
+    <script src="js/SwitcherField.js"></script>
+    <script src="js/SwitcherBoard.js"></script>
+    <script src="js/SwitcherLevelOptions.js"></script>
+    <script>
+
+        "use strict";
+        var stage;
+        var queue;
+        var game;
+        var percentLoaded;
+        var loading;
+
+        function init(){
+
+            stage = new createjs.Stage(document.getElementById("gameStage"));
+            queue = new createjs.LoadQueue(false);
+            createjs.Sound.alternateExtensions = ["mp3"];
+            queue.installPlugin(createjs.Sound);
+
+            var x = (1280/2);
+            var y = (720/2);
+
+            percentLoaded = new createjs.Text("" , "90px Russo One" , "white");
+            percentLoaded.textAlign = "center";
+            percentLoaded.textBaseline = "middle";
+            percentLoaded.x = x;
+            percentLoaded.y = y;
+
+            var background = new createjs.Shape();
+            background.graphics.beginFill("black").drawRect(0,0,1280,720);
+
+            loading = new createjs.Shape();
+            loading.x = x;
+            loading.y = y;
+            loading.rotation = -90;
+            stage.addChild(background,loading,percentLoaded);
+            startAssetsLoading();
+        }
+
+        function startAssetsLoading() {
+            queue.installPlugin(createjs.Sound);
+            queue.on("complete", loadComplete);
+            queue.on("progress", handleProgress);
+            queue.loadManifest([
+                {id: "background", src:"assets/gameComponents/background.jpg"},
+                {id: "solved", src:"assets/gameComponents/solved.png"},
+                {id: "switcherBtn", src:"assets/gameComponents/switcher.png"},
+                {id: "paginationBack", src:"assets/gameComponents/paginationBackground.png"},
+                {id: "leftBtn", src:"assets/gameComponents/left.png"},
+                {id: "rightBtn", src:"assets/gameComponents/right.png"},
+                {id: "backBtn", src:"assets/gameComponents/back.png"},
+
+                {id: "switcher", src:"assets/images/switcher.jpg"},
+                {id: "switcher2", src:"assets/images/switcher2.jpg"},
+                {id: "switcher3", src:"assets/images/switcher3.jpg"},
+                {id: "switcher4", src:"assets/images/switcher4.jpg"},
+                {id: "switcher5", src:"assets/images/switcher5.jpg"},
+                {id: "switcher6", src:"assets/images/switcher6.jpg"},
+                {id: "switcher7", src:"assets/images/switcher7.jpg"},
+                {id: "switcher8", src:"assets/images/switcher8.jpg"},
+                {id: "switcher9", src:"assets/images/switcher9.jpg"},
+                {id: "switcher10", src:"assets/images/switcher10.jpg"},
+                {id: "switcher11", src:"assets/images/switcher11.jpg"},
+                {id: "switcher12", src:"assets/images/switcher12.jpg"},
+                {id: "switcher13", src:"assets/images/switcher13.jpg"},
+                {id: "switcher14", src:"assets/images/switcher14.jpg"},
+                {id: "switcher15", src:"assets/images/switcher15.jpg"},
+                {id: "switcher16", src:"assets/images/switcher16.jpg"},
+                {id: "switcher17", src:"assets/images/switcher17.jpg"},
+                {id: "switcher18", src:"assets/images/switcher18.jpg"},
+                {id: "switcher19", src:"assets/images/switcher19.jpg"},
+                {id: "switcher20", src:"assets/images/switcher20.jpg"},
+                {id: "switcher21", src:"assets/images/switcher21.jpg"},
+                {id: "switcher22", src:"assets/images/switcher22.jpg"},
+                {id: "switcher23", src:"assets/images/switcher23.jpg"},
+                {id: "switcher24", src:"assets/images/switcher24.jpg"}
+            ]);
+        }
+
+        function handleProgress(event){
+            percentLoaded.text = Math.round(event.progress* 100) + " %";
+            var fill = Math.round(event.progress * 360);
+            loading.graphics.clear().setStrokeStyle(20).beginStroke("#d0ff00").arc(0, 0, 150, 0, (Math.PI/180)*fill).endStroke();
+            stage.update();
+        }
+
+        function loadComplete() {
+            stage.removeAllChildren();
+            game = new system.MainGame();
+            stage.addChild(game);
+            percentLoaded = null;
+            loading = null;
+            setupStage();
+        }
+
+        function setupStage(){
+            createjs.Ticker.timingMode = createjs.Ticker.RAF;
+            createjs.Ticker.addEventListener("tick", function(e){ // e needs because animation wont change framerate without it
+                game.render(e);
+            });
+        }
+
+    </script>
+
+</head>
+<body onload="init();" oncontextmenu= "return false">
+
+<div class="container">
+    <canvas id="gameStage" width="1280" height="720"></canvas>
+</div>
+</body>
+</html>
