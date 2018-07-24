@@ -6,11 +6,11 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var SwitcherLevelOptions = function(){
+    const SwitcherLevelOptions = function(){
         this.init();
     };
 
-    var p = SwitcherLevelOptions.prototype;
+    const p = SwitcherLevelOptions.prototype;
     p.options = null;
 
     p.init = function () {
@@ -187,9 +187,8 @@ this.system = this.system || {};
     };
     
     p.getOptionsForLevel = function(level){
-        var lvl = "level" + level;
+        const lvl = "level" + level;
         return this.options[lvl];
-        
     };
 
     system.SwitcherLevelOptions = SwitcherLevelOptions;

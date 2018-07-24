@@ -6,27 +6,24 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var SwitcherBoard = function(options,game){
+    const SwitcherBoard = function(options,game){
         this.AbstractPuzzleBoard_constructor(options,game);
         this.initBoard();
     };
 
-    var p = createjs.extend(SwitcherBoard, system.AbstractPuzzleBoard);
-    var that;
+    const p = createjs.extend(SwitcherBoard, system.AbstractPuzzleBoard);
 
-    p.initBoard = function () {
-        that = this;
-    };
+    p.initBoard = function () {};
 
     p.generateFields = function () {
-        var x;
-        var y;
-        for(var i = 0; i < this.rows; i++){
+        let x;
+        let y;
+        for(let i = 0; i < this.rows; i++){
             y = i * this.fieldHeight;
-            for(var j = 0; j < this.columns; j++){
+            for(let j = 0; j < this.columns; j++){
                 x = j * this.fieldWidth;
-                var name = "n" + i + j;
-                var field = new system.SwitcherField(this.mainImage,x,y,this.fieldWidth,this.fieldHeight);
+                const name = "n" + i + j;
+                const field = new system.SwitcherField(this.mainImage,x,y,this.fieldWidth,this.fieldHeight);
                 field.name = name;
                 this.addChild(field);
             }
@@ -34,16 +31,16 @@ this.system = this.system || {};
     };
 
     p.rearrangeFields = function () {
-        var children = this.numChildren;
-        for(var i = 0; i < children; i++){
-            var randomNum = Math.round(Math.random() * (children-1));
-            var child = this.getChildAt(i);
-            var randomChild = this.getChildAt(randomNum);
+        const children = this.numChildren;
+        for(let i = 0; i < children; i++){
+            const randomNum = Math.round(Math.random() * (children-1));
+            const child = this.getChildAt(i);
+            const randomChild = this.getChildAt(randomNum);
 
-            var childX = child.x;
-            var childY = child.y;
-            var randomChildX = randomChild.x;
-            var randomChildY = randomChild.y;
+            const childX = child.x;
+            const childY = child.y;
+            const randomChildX = randomChild.x;
+            const randomChildY = randomChild.y;
 
             child.x = randomChildX;
             child.y = randomChildY;
@@ -56,14 +53,14 @@ this.system = this.system || {};
         this.game.framesBtn.enableClick(true);
     };
 
-    p.onChoose = function (e) {
-        var child = e.target.parent.name;
-        var field = that.getChildByName(child);
+    p.onChoose = function(e) {
+        const child = e.target.parent.name;
+        const field = this.getChildByName(child);
         field.selectField();
-        if(that.selectedField){
-            that.rotateFields(that.selectedField,field);
+        if(this.selectedField){
+            this.rotateFields(this.selectedField,field);
         }else{
-            that.selectedField = field;
+            this.selectedField = field;
         }
     };
 
@@ -74,28 +71,28 @@ this.system = this.system || {};
     };
 
     p.doAnimation = function (field,x,y) { // switching two fields
-        createjs.Tween.get(field).to({scaleX:0.8,scaleY:0.8},200).to({x:x,y:y,scaleX:1,scaleY:1,alpha:1},400,createjs.Ease.getPowInOut(2)).call(function () {
-            that.actionAfterAnimation(field,x,y);
+        createjs.Tween.get(field).to({scaleX:0.8,scaleY:0.8},200).to({x:x,y:y,scaleX:1,scaleY:1,alpha:1},400,createjs.Ease.getPowInOut(2)).call(()=> {
+            this.actionAfterAnimation(field,x,y);
         });
     };
 
     p.actionAfterAnimation = function (field,x,y) {
         field.setCurrentPos(x,y);
-        that.animationsCounter++;
-        if(that.animationsCounter === 2){
-            that.selectedField = null;
-            that.animationsCounter = 0;
-            that.checkBoard();
+        this.animationsCounter++;
+        if(this.animationsCounter === 2){
+            this.selectedField = null;
+            this.animationsCounter = 0;
+            this.checkBoard();
         }
     };
 
     p.doSolveAnimation = function (field) {
-        createjs.Tween.get(field).to({x:field.correctPos.xPos,y:field.correctPos.yPos},600).call(function () {
-            that.animationsCounter++;
+        createjs.Tween.get(field).to({x:field.correctPos.xPos,y:field.correctPos.yPos},600).call(()=> {
+            this.animationsCounter++;
             field.setCurrentPos(field.x,field.y);
-            if(that.animationsCounter === that.numChildren){
-                that.animationsCounter = 0;
-                that.checkBoard();
+            if(this.animationsCounter === this.numChildren){
+                this.animationsCounter = 0;
+                this.checkBoard();
             }
         })
     };

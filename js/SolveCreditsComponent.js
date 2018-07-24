@@ -6,12 +6,12 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var SolveCreditsComponent = function(game){
+    const SolveCreditsComponent = function(game){
         this.Container_constructor();
         this.init(game);
     };
 
-    var p = createjs.extend(SolveCreditsComponent,createjs.Container);
+    const p = createjs.extend(SolveCreditsComponent,createjs.Container);
     p.game = null;
     p.bar = null;
     p.barLevel = null;
@@ -23,21 +23,21 @@ this.system = this.system || {};
         this.numOfCredits = this.game.mainGame.player.solveCredits;
         this.barLevel = this.game.mainGame.player.solveCreditsBarLevel;
 
-        var frame = new createjs.Shape(new createjs.Graphics().setStrokeStyle(4).beginStroke("#fc5c61").drawRoundRect (0, 0, 402, 40, 6));
+        const frame = new createjs.Shape(new createjs.Graphics().setStrokeStyle(4).beginStroke("#fc5c61").drawRoundRect (0, 0, 402, 40, 6));
         frame.mouseEnabled = false;
         frame.cache(0,0,402,40);
 
-        var bar = this.bar = new createjs.Shape(new createjs.Graphics().beginFill("#ffe2e9").drawRoundRect(0,0,387,27,6));
+        const bar = this.bar = new createjs.Shape(new createjs.Graphics().beginFill("#ffe2e9").drawRoundRect(0,0,387,27,6));
         bar.x = 7;
         bar.y = 7;
         bar.mouseEnabled = false;
         bar.scaleX = 0.25 * this.barLevel;
 
-        var credits = this.creditsTxt = system.CustomMethods.makeText("X " + this.numOfCredits,"31px Russo One","#ffe2e9" , "center" , "alphabetic");
+        const credits = this.creditsTxt = system.CustomMethods.makeText("X " + this.numOfCredits,"31px Russo One","#ffe2e9" , "center" , "alphabetic");
         credits.x = 435;
         credits.y = 31;
 
-        var infoTxt = system.CustomMethods.makeText("solve button credits","27px Russo One","#fc5c61" , "center" , "alphabetic");
+        const infoTxt = system.CustomMethods.makeText("solve button credits","27px Russo One","#fc5c61" , "center" , "alphabetic");
         infoTxt.x = 201;
         infoTxt.y = 30;
 
@@ -57,20 +57,18 @@ this.system = this.system || {};
     };
 
     p.updateCreditsTxt = function () {
-        var that = this;
-        createjs.Tween.get(this.creditsTxt).to({alpha:0},300).call(function () {
-            that.creditsTxt.text = "X " + that.numOfCredits;
-            createjs.Tween.get(that.creditsTxt).to({alpha:1},300);
+        createjs.Tween.get(this.creditsTxt).to({alpha:0},300).call(()=> {
+            this.creditsTxt.text = "X " + this.numOfCredits;
+            createjs.Tween.get(this.creditsTxt).to({alpha:1},300);
         });
 
     };
 
     p.updateBar = function () {
-        var that = this;
-        var scale = 0.25 * this.barLevel;
-        createjs.Tween.get(this.bar).to({scaleX:scale},300).call(function () {
+        const scale = 0.25 * this.barLevel;
+        createjs.Tween.get(this.bar).to({scaleX:scale},300).call(()=> {
             if(scale === 1){
-                createjs.Tween.get(that.bar).to({scaleX:0},300);
+                createjs.Tween.get(this.bar).to({scaleX:0},300);
             }
         });
     };

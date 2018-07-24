@@ -6,26 +6,25 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var AbstractPuzzleField = function(){
+    const AbstractPuzzleField = function(){
         this.Container_constructor();
         this.init();
     };
 
-    var p = createjs.extend(AbstractPuzzleField, createjs.Container);
+    const p = createjs.extend(AbstractPuzzleField, createjs.Container);
 
 
     p.init = function () {};
 
     p.removeFrame = function () {
-        var that = this;
-        var frame = this.getChildAt(1);
-        createjs.Tween.get(frame).to({alpha:0},500).call(function () {
-            that.removeChild(frame);
+        const frame = this.getChildAt(1);
+        createjs.Tween.get(frame).to({alpha:0},500).call(()=> {
+            this.removeChild(frame);
         });
     };
 
     p.showHideFrame = function () {
-        var frame = this.getChildAt(1);
+        const frame = this.getChildAt(1);
         frame.visible = !frame.visible;
     };
 

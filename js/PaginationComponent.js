@@ -6,12 +6,12 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var PaginationComponent = function(numPages,game){
+    const PaginationComponent = function(numPages,game){
         this.Container_constructor();
         this.init(numPages,game);
     };
 
-    var p = createjs.extend(PaginationComponent,createjs.Container);
+    const p = createjs.extend(PaginationComponent,createjs.Container);
     p.game = null;
     p.leftButton = null;
     p.rightButton = null;
@@ -21,28 +21,27 @@ this.system = this.system || {};
 
     p.init = function (numPages,game) {
         this.game = game;
-        var that = this;
         this.numOfPages = numPages;
         this.currentPage = 1;
 
-        var back = system.CustomMethods.makeImage("paginationBack" , false);
+        const back = system.CustomMethods.makeImage("paginationBack" , false);
 
-        var current = this.currentPageTxt = system.CustomMethods.makeText(this.currentPage,"31px Russo One","#fdfdff" , "center" , "alphabetic");
+        const current = this.currentPageTxt = system.CustomMethods.makeText(this.currentPage,"31px Russo One","#fdfdff" , "center" , "alphabetic");
         current.x = 107;
         current.y = 47;
 
-        var img = system.CustomMethods.makeImage("leftBtn" , true);
-        var left = this.leftButton = new system.ImageButton(img);
-        left.on("click",function(event){
-            that.onLeftBtn();
+        const img = system.CustomMethods.makeImage("leftBtn" , true);
+        const left = this.leftButton = new system.ImageButton(img);
+        left.on("click",(event)=>{
+            this.onLeftBtn();
         });
         left.x = 40;
         left.y = 7;
 
-        var img2 = system.CustomMethods.makeImage("rightBtn" , true);
-        var right = this.rightButton = new system.ImageButton(img2);
-        right.on("click",function(event){
-            that.onRightBtn();
+        const img2 = system.CustomMethods.makeImage("rightBtn" , true);
+        const right = this.rightButton = new system.ImageButton(img2);
+        right.on("click",(event)=>{
+            this.onRightBtn();
         });
 
         right.x = 174;
@@ -71,13 +70,13 @@ this.system = this.system || {};
     };
 
     p.updateComponents = function () {
-        var leftEnable = this.currentPage > 1;
-        var rightEnable = this.currentPage < this.numOfPages;
+        const leftEnable = this.currentPage > 1;
+        const rightEnable = this.currentPage < this.numOfPages;
         this.leftButton.enableClick(leftEnable);
         this.rightButton.enableClick(rightEnable);
         this.currentPageTxt.text = this.currentPage;
-        var from = (this.currentPage-1) * 6;
-        var to = from + 6;
+        const from = (this.currentPage-1) * 6;
+        const to = from + 6;
         this.game.resetLevelsButtons(from,to);
     };
 

@@ -24,11 +24,11 @@
     <script>
 
         "use strict";
-        var stage;
-        var queue;
-        var game;
-        var percentLoaded;
-        var loading;
+        let stage;
+        let queue;
+        let game;
+        let percentLoaded;
+        let loading;
 
         function init(){
 
@@ -37,8 +37,8 @@
             createjs.Sound.alternateExtensions = ["mp3"];
             queue.installPlugin(createjs.Sound);
 
-            var x = (1280/2);
-            var y = (720/2);
+            const x = (1280/2);
+            const y = (720/2);
 
             percentLoaded = new createjs.Text("" , "90px Russo One" , "white");
             percentLoaded.textAlign = "center";
@@ -46,7 +46,7 @@
             percentLoaded.x = x;
             percentLoaded.y = y;
 
-            var background = new createjs.Shape();
+            let background = new createjs.Shape();
             background.graphics.beginFill("black").drawRect(0,0,1280,720);
 
             loading = new createjs.Shape();
@@ -99,7 +99,7 @@
 
         function handleProgress(event){
             percentLoaded.text = Math.round(event.progress* 100) + " %";
-            var fill = Math.round(event.progress * 360);
+            const fill = Math.round(event.progress * 360);
             loading.graphics.clear().setStrokeStyle(20).beginStroke("#d0ff00").arc(0, 0, 150, 0, (Math.PI/180)*fill).endStroke();
             stage.update();
         }

@@ -6,22 +6,25 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var ImageButton = function(img,scale){
+    const ImageButton = function(img,scale){
         this.Container_constructor();
         this.init(img,scale);
     };
 
-    var p = createjs.extend(ImageButton,createjs.Container);
-    p.scale = 1;
+    const p = createjs.extend(ImageButton,createjs.Container);
+    p.scaleNum = 1;
     p.hasSticker = false;
     p._bestTimeTxt = null;
+    p.stickerImg = null;
 
     p.init = function (img,scale) {
-        if(scale){
-            this.scale = scale;
-        }
-        var body = img;
+
+        const body = img;
         body.regX = body.image.width/2;
+        if(scale){
+            body.scale = scale;
+            this.scaleNum = scale;
+        }
         //body.regY = body.image.height/2; // pisalo je regy sa malim y , suludo je sad menjati pozicije svim dugmicima u svim igrama
         this.addChild(body);
     };
@@ -35,19 +38,32 @@ this.system = this.system || {};
     };
 
     p.addSticker = function () {
-        var stickerImg = system.CustomMethods.makeImage("solved" , false);
+        const stickerImg = this.stickerImg = system.CustomMethods.makeImage("solved" , false);
         stickerImg.regX = stickerImg.image.width/2;
         stickerImg.regY = stickerImg.image.height/2;
-        stickerImg.scaleX = stickerImg.scaleY = this.scale;
-        stickerImg.x = (this.getButtonWidth() * this.scale)/2;
+        stickerImg.scale = this.scaleNum;
+        stickerImg.x = (this.getButtonWidth() * this.scaleNum)/2;
+        stickerImg.visible = false;
         this.addChild(stickerImg);
-        this.hasSticker = true;
+        this.hasSticker = false;
     };
 
-    p.addBestTime = function (time) {
-        var text = this._bestTimeTxt = system.CustomMethods.makeText("Best time: " + time , "22px Russo One" , "white" , "center" , "alphabetic");
-        text.y = this.getButtonHeight() * this.scale + 20;
+    p.addBestTime = function () {
+        const text = this._bestTimeTxt = system.CustomMethods.makeText("" , "28px Russo One" , "white" , "center" , "alphabetic");
+        text.y = (this.getButtonHeight() * this.scaleNum) + 30;
         this.addChild(text);
+    };
+
+    p.showSticker = function(bool){
+        this.hasSticker = bool;
+        this.stickerImg.visible = bool;
+        if(bool === true){
+            this.stickerImg.x = (this.getButtonWidth() * this.scaleNum)/2;
+        }
+    };
+
+    p.showBestTime = function(bool){
+        this._bestTimeTxt.visible = bool;
     };
 
     p.updateBestTimeTxt = function (time) {

@@ -6,27 +6,27 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var SwitcherGame = function(numOfLevels,main){
+    const SwitcherGame = function(numOfLevels,main){
         this.AbstractPuzzleGame_constructor("Switcher",numOfLevels,main);
         this.initGame();
     };
 
-    var p = createjs.extend(SwitcherGame, system.AbstractPuzzleGame);
+    const p = createjs.extend(SwitcherGame, system.AbstractPuzzleGame);
 
     p.initGame = function () {};
 
     p.addLevelsButtons = function (from,to) {
-        var that = this;
-        var solvedLevels = this.mainGame.player.switcherPuzzleSolvedLevels;
-        var levelsBtns = this.levelsBtns = new createjs.Container();
+        console.log("adding buttons");
+        const solvedLevels = this.mainGame.player.switcherPuzzleSolvedLevels;
+        const levelsBtns = this.levelsBtns = new createjs.Container();
 
-        for(var i = from; i < to; i++){
-            var num = i+1;
-            var level = "level" + num;
-            var img = system.CustomMethods.makeImage(this.levelsOptions.options[level].mainImage , true);
-            var levelBtn = new system.ImageButton(img,0.3);
+        for(let i = from; i < to; i++){
+            const num = i+1;
+            const level = "level" + num;
+            const img = system.CustomMethods.makeImage(this.levelsOptions.options[level].mainImage , true);
+            const levelBtn = new system.ImageButton(img,0.3);
 
-            var firstEnd = from + 3;//9
+            const firstEnd = from + 3;//9
 
             if(i >= firstEnd){//second row
                 levelBtn.x = (i - firstEnd) * 389;
@@ -37,26 +37,44 @@ this.system = this.system || {};
 
             levelBtn.name = num;
 
-/*            if(solvedLevels.indexOf(num) > -1){
-                levelBtn.addSticker();
-            }*/
-            if(solvedLevels.hasOwnProperty(num)){ // addSticker se poziva ovde posto paginacija sklanja sve dugmice
-                levelBtn.addSticker();
-                levelBtn.addBestTime(this.timer.formatTime(solvedLevels[num]));
-            }
+            levelBtn.addSticker();
+            levelBtn.addBestTime();
             levelsBtns.addChild(levelBtn);
 
         }
-        levelsBtns.on("click" , function (e) {
-            that.level = e.target.parent.name;
-            that.loadLevel(that.gameName);
-            that.levelsBtns.visible = false;
+        levelsBtns.on("click" , (e)=> {
+            this.level = e.target.parent.name;
+            this.loadLevel(this.gameName);
+            this.levelsBtns.visible = false;
         });
 
         levelsBtns.x = 252;
         levelsBtns.y = 134;
 
         this.addChild(levelsBtns);
+    };
+
+    p.refreshLevelsButtons = function(from , to){
+        const solvedLevels = this.mainGame.player.switcherPuzzleSolvedLevels;
+        let childInd = 0;
+        for(let i = from; i < to; i++){
+            const num = i+1;
+            const level = "level" + num;
+            const levelBtn = this.levelsBtns.getChildAt(childInd);
+            const imgName = this.levelsOptions.options[level].mainImage;
+            system.CustomMethods.swapImages(levelBtn.getChildAt(0) , imgName);
+
+            levelBtn.name = num;
+
+            if(solvedLevels.hasOwnProperty(num)){ // addSticker se poziva ovde posto paginacija sklanja sve dugmice
+                levelBtn.showSticker(true);
+                levelBtn.updateBestTimeTxt(this.timer.formatTime(solvedLevels[num]));
+            }else{
+                levelBtn.showSticker(false);
+                levelBtn.updateBestTimeTxt("");
+            }
+            childInd++;
+        }
     };
 
     system.SwitcherGame = createjs.promote(SwitcherGame,"AbstractPuzzleGame");

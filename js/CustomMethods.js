@@ -3,10 +3,10 @@ this.system = this.system || {};
 (function() {
     "use strict";
 
-    var CustomMethods = function() {};
+    const CustomMethods = function() {};
 
     CustomMethods.makeText = function (txt,font,color,align,baseline) {
-        var textField = new createjs.Text(txt, font, color);
+        const textField = new createjs.Text(txt, font, color);
         textField.textAlign = align;
         textField.textBaseline = baseline;
         textField.mouseEnabled = false;
@@ -15,16 +15,20 @@ this.system = this.system || {};
     };
 
     CustomMethods.makeImage = function (id , clickable) {
-        var img = new createjs.Bitmap(queue.getResult(id));
+        const img = new createjs.Bitmap(queue.getResult(id));
         img.mouseEnabled = clickable;
         img.tickEnabled = false;
         return img;
     };
 
+    CustomMethods.swapImages = function(original , newImage){
+        original.image = queue.getResult(newImage);
+    };
+
     CustomMethods.makeImageFromAtlas = function (atlas , json , imgName) {
-        var imgPropsIndex = json.animations[imgName];
-        var imgProps = json.frames[imgPropsIndex];
-        var img = atlas.clone();
+        const imgPropsIndex = json.animations[imgName];
+        const imgProps = json.frames[imgPropsIndex];
+        const img = atlas.clone();
         img.sourceRect = new createjs.Rectangle(imgProps[0],imgProps[1],imgProps[2],imgProps[3]);
         return img;
     };
@@ -40,11 +44,11 @@ this.system = this.system || {};
     };
 
     CustomMethods.makeAnimation = function (img,framesNum,fps,loop) {
-        var sheet = queue.getResult(img);
-        var singleWidth = sheet.width/framesNum;
-        var singleHeight = sheet.height;
-        var frames = framesNum - 1;
-        var data = {
+        const sheet = queue.getResult(img);
+        const singleWidth = sheet.width/framesNum;
+        const singleHeight = sheet.height;
+        const frames = framesNum - 1;
+        const data = {
             images: [sheet],
             frames: {regX:singleWidth/2 , regY:singleHeight/2 ,width: singleWidth, height: singleHeight, count:framesNum},
             animations: {
@@ -52,8 +56,8 @@ this.system = this.system || {};
             },
             framerate:fps
         };
-        var bmpAnimation = new createjs.SpriteSheet(data);
-        var animation = new createjs.Sprite(bmpAnimation);
+        const bmpAnimation = new createjs.SpriteSheet(data);
+        const animation = new createjs.Sprite(bmpAnimation);
         animation.mouseEnabled = false;
         return animation;
     };

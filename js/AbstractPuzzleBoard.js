@@ -6,12 +6,12 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var AbstractPuzzleBoard = function(options,game){
+    const AbstractPuzzleBoard = function(game){
         this.Container_constructor();
-        this.init(options,game);
+        this.init(game);
     };
 
-    var p = createjs.extend(AbstractPuzzleBoard, createjs.Container);
+    const p = createjs.extend(AbstractPuzzleBoard, createjs.Container);
     p.rows = 0;
     p.columns = 0;
     p.fieldWidth = 0;
@@ -21,13 +21,10 @@ this.system = this.system || {};
     p.animationsCounter = 0;
     p.mainImage = "";
     p.game = null;
-    var that;
 
-    p.init = function (options,game) {
-        that = this;
+    p.init = function (game) {
         this.game = game;
-        this.setBoard(options);
-        this.addEventListener("click",this.onChoose);
+        this.addEventListener("click",(e)=>{this.onChoose(e)});
     };
 
     p.setBoard = function (options) {
@@ -41,9 +38,9 @@ this.system = this.system || {};
     };
 
     p.checkBoard = function () {
-        var children = this.numChildren;
-        var correct = 0;
-        for(var i = 0; i < children; i++){
+        const children = this.numChildren;
+        let correct = 0;
+        for(let i = 0; i < children; i++){
             if(this.getChildAt(i).checkPos()){
                 correct++;
             }else{
@@ -55,37 +52,37 @@ this.system = this.system || {};
             this.game.levelSolved();
             this.removeFieldFrames();
         }else{
-            that.enableMouse(true);
+            this.enableMouse(true);
         }
     };
 
     p.removeFieldFrames = function () {
-        var children = this.numChildren;
-        for(var i = 0; i < children; i++){
+        const children = this.numChildren;
+        for(let i = 0; i < children; i++){
             this.getChildAt(i).removeFrame();
         }
     };
 
     p.showHideFrames = function () {
-        var children = this.numChildren;
-        for(var i = 0; i < children; i++){
+        const children = this.numChildren;
+        for(let i = 0; i < children; i++){
             this.getChildAt(i).showHideFrame();
         }
     };
 
     p.removeFields = function () {
-        var children = this.numChildren-1;
-        for(var i = children; i > -1; i--){
+        const children = this.numChildren-1;
+        for(let i = children; i > -1; i--){
             this.getChildAt(i).removeField();
         }
     };
     
     p.solvePuzzle = function () {
-        var children = this.numChildren;
+        const children = this.numChildren;
         this.game.framesBtn.enableClick(false);
         this.game.solveBtn.enableClick(false);
-        for(var i = 0; i < children; i++){
-            var child = this.getChildAt(i);
+        for(let i = 0; i < children; i++){
+            const child = this.getChildAt(i);
             this.doSolveAnimation(child);
         }
     };

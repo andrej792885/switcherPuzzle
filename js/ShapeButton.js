@@ -6,22 +6,22 @@ this.system = this.system || {};
 (function(){
     "use strict";
 
-    var ShapeButton = function(width,height,radius,color){
+    const ShapeButton = function(width,height,radius,color){
         this.Container_constructor();
         this.init(width,height,radius,color);
     };
 
-    var p = createjs.extend(ShapeButton,createjs.Container);
+    const p = createjs.extend(ShapeButton,createjs.Container);
 
     p.init = function (width,height,radius,color) {
-        var body = new createjs.Shape(new createjs.Graphics().beginFill(color).drawRoundRect(0, 0, width, height,radius));
+        const body = new createjs.Shape(new createjs.Graphics().beginFill(color).drawRoundRect(0, 0, width, height,radius));
         body.regX = width/2;
         body.regy = height/2;
         this.addChild(body);
     };
 
     p.addText = function (text,font,color,x,y) {
-        var txt = system.CustomMethods.makeText(text,font,color , "center" , "alphabetic");
+        const txt = system.CustomMethods.makeText(text,font,color , "center" , "alphabetic");
         if(x){
             txt.x = x;
         }
