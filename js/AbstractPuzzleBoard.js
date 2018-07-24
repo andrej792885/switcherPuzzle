@@ -35,6 +35,7 @@ this.system = this.system || {};
         this.mainImage = options.mainImage;
         this.generateFields();
         this.rearrangeFields();
+        this.enableMouse(true);
     };
 
     p.checkBoard = function () {
