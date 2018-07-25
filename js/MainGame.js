@@ -103,7 +103,6 @@ this.system = this.system || {};
 
     p.render = function(e){
         stage.update(e);
-
     };
 
     system.MainGame = createjs.promote(MainGame,"Container");

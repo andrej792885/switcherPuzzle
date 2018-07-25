@@ -18,7 +18,6 @@ this.system = this.system || {};
     p.stickerImg = null;
 
     p.init = function (img,scale) {
-
         const body = img;
         body.regX = body.image.width/2;
         if(scale){
