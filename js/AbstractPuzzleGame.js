@@ -50,12 +50,12 @@ this.system = this.system || {};
             this.board.showHideFrames();
         });
 
-        const showImageBtn = this.showImageBtn = new system.ShapeButton(87,33,6,"#73d0fc");
+        //const showImageBtn = this.showImageBtn = new system.ShapeButton(87,33,6,"#73d0fc");
+        let img = system.CustomMethods.makeImage("showImgButton" , true);
+        const showImageBtn = this.showImageBtn = new system.ImageButton(img);
         showImageBtn.x = 51;
         showImageBtn.y = 114;
-        showImageBtn.addText("IMAGE","20px Russo One","#44484f",0,24);
         showImageBtn.on("click",(event)=>{
-            showImageBtn.doClickAnimation();
             this.onShowImageBtn();
         });
 
@@ -74,7 +74,7 @@ this.system = this.system || {};
         solveCreditsComponent.x = 442;
         solveCreditsComponent.y = 677;
 
-        const img = system.CustomMethods.makeImage("backBtn" , true);
+        img = system.CustomMethods.makeImage("backBtn" , true);
         const backBtn = this.backBtn = new system.ImageButton(img);
         backBtn.x = 42;
         backBtn.y = 643;
