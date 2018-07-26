@@ -26,33 +26,38 @@ this.system = this.system || {};
 
         const back = system.CustomMethods.makeImage("paginationBack" , false);
 
-        const current = this.currentPageTxt = system.CustomMethods.makeText(this.currentPage,"31px Russo One","#fdfdff" , "center" , "alphabetic");
+        const current = this.currentPageTxt = system.CustomMethods.makeText(this.currentPage,"31px Russo One","#fdfdff" , "center" , "middle");
         current.x = 107;
-        current.y = 47;
+        current.y = 40;
 
         const img = system.CustomMethods.makeImage("leftBtn" , true);
         const left = this.leftButton = new system.ImageButton(img);
+        const hit = new createjs.Shape();
+        hit.graphics.beginFill("#000").drawRect(0, 0, 100, 100);
+        hit.regX = 50;
+        left.hitArea = hit;
         left.on("click",(event)=>{
             this.onLeftBtn();
         });
-        left.x = 40;
-        left.y = 7;
+        left.x = 39;
+        left.y = -10;
 
         const img2 = system.CustomMethods.makeImage("rightBtn" , true);
         const right = this.rightButton = new system.ImageButton(img2);
+        right.hitArea = hit;
         right.on("click",(event)=>{
             this.onRightBtn();
         });
 
         right.x = 174;
-        right.y = 7;
+        right.y = -10;
 
         this.addChild(back,current,left,right);
 
         if(numPages === 1){
-            left.enableClick(false);
             right.enableClick(false);
         }
+        left.enableClick(false);
     };
 
     p.onLeftBtn = function () {

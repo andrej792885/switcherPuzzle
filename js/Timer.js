@@ -22,9 +22,11 @@ this.system = this.system || {};
     p.initTimer = function () {
         const text = this._timerTxt = system.CustomMethods.makeText("00:00","36px Russo One","white" , "center" , "alphabetic");
         this.addChild(text);
+        this.show(false);
     };
 
     p.startTimer = function () {
+        this.show(true);
         let minutes = "";
         let seconds = "";
         this._interval = setInterval(()=> {
@@ -33,7 +35,6 @@ this.system = this.system || {};
                 this._seconds = 0;
                 this._minutes++;
             }
-
             minutes = this._minutes < 10 ? "0" + this._minutes : "" + this._minutes; //  da bi zadrzao tip promenjive , tj da ne bude do 9 string , a posle number
             seconds = this._seconds < 10 ? "0" + this._seconds : "" + this._seconds;
             this._timerTxt.text = minutes + ":" + seconds;
@@ -43,6 +44,7 @@ this.system = this.system || {};
     p.stopTimer = function () {
         clearInterval(this._interval);
         this._interval = null;
+        this.show(false);
     };
 
     p.takeTime = function () {

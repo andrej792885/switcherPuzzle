@@ -34,8 +34,8 @@ this.system = this.system || {};
         hit.graphics.beginFill("#000").drawRect(0, 0, img.image.width, img.image.height);
         hit.regX = img.image.width/2;
         switcherPuzzleBtn.hitArea = hit;
-        switcherPuzzleBtn.x = 220;
-        switcherPuzzleBtn.y = 100;
+        switcherPuzzleBtn.x = 640;
+        switcherPuzzleBtn.y = 50;
         switcherPuzzleBtn.addEventListener("click" , (e)=>{
             this.showMainGameComponents(false);
         });

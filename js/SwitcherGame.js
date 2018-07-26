@@ -48,7 +48,7 @@ this.system = this.system || {};
             this.levelsBtns.visible = false;
         });
 
-        levelsBtns.x = 252;
+        levelsBtns.x = 270;
         levelsBtns.y = 134;
 
         this.addChild(levelsBtns);

@@ -41,30 +41,38 @@ this.system = this.system || {};
         const levelOptions = gameName + "LevelOptions";
         this.levelsOptions = new system[levelOptions](); // todo NE BI TREBALO DA SE INSTANCIRA SVAKI PUT NOVA KLASA
 
-        const framesBtn = this.framesBtn = new system.ShapeButton(87,33,6,"#73d0fc");
+        const hit = new createjs.Shape();
+        hit.graphics.beginFill("#000").drawRect(0, 0, 100, 100);
+        hit.regX = 50;
+
+
+        //const framesBtn = this.framesBtn = new system.ShapeButton(87,33,6,"#73d0fc");
+        let img = system.CustomMethods.makeImage("showFramesButton" , true);
+        const framesBtn = this.framesBtn = new system.ImageButton(img);
+        framesBtn.hitArea = hit;
         framesBtn.x = 51;
-        framesBtn.y = 60;
-        framesBtn.addText("FRAMES","19px Russo One","#44484f",0,24);
+        framesBtn.y = 310;
         framesBtn.on("click",(event)=>{
-            framesBtn.doClickAnimation();
             this.board.showHideFrames();
         });
 
         //const showImageBtn = this.showImageBtn = new system.ShapeButton(87,33,6,"#73d0fc");
-        let img = system.CustomMethods.makeImage("showImgButton" , true);
+        img = system.CustomMethods.makeImage("showImgButton" , true);
         const showImageBtn = this.showImageBtn = new system.ImageButton(img);
+        showImageBtn.hitArea = hit;
         showImageBtn.x = 51;
-        showImageBtn.y = 114;
+        showImageBtn.y = 100;
         showImageBtn.on("click",(event)=>{
             this.onShowImageBtn();
         });
 
-        const solveBtn = this.solveBtn = new system.ShapeButton(100,40,6,"#fc5c61");
+        //const solveBtn = this.solveBtn = new system.ShapeButton(100,40,6,"#fc5c61");
+        img = system.CustomMethods.makeImage("solveButton" , true);
+        const solveBtn = this.solveBtn = new system.ImageButton(img);
+        solveBtn.hitArea = hit;
         solveBtn.x = 1228;
-        solveBtn.y = 675;
-        solveBtn.addText("SOLVE","24px Russo One","#ffe2e9",0,30);
+        solveBtn.y = 310;
         solveBtn.on("click",(event)=>{
-            solveBtn.doClickAnimation();
             this.solveCreditsComponent.numOfCredits--;
             this.solveCreditsComponent.updateCreditsTxt();
             this.board.solvePuzzle();
@@ -76,22 +84,23 @@ this.system = this.system || {};
 
         img = system.CustomMethods.makeImage("backBtn" , true);
         const backBtn = this.backBtn = new system.ImageButton(img);
-        backBtn.x = 42;
-        backBtn.y = 643;
+        backBtn.hitArea = hit;
+        backBtn.x = 51;
+        backBtn.y = 500;
         backBtn.on("click",(event)=>{
             this.onBackBtn();
         });
 
         const pages = Math.ceil(this.numberOfLevels/6); // 6 = buttons per page
         const pagination = this.paginationComponent = new system.PaginationComponent(pages,this);
-        pagination.x = 536;
+        pagination.x = 555;
         pagination.y = 7;
 
         const timer = this.timer = new system.Timer();
-        timer.x = 1210;
+        timer.x = 640;
         timer.y = 36;
 
-        this.addChild(framesBtn,solveBtn,showImageBtn,backBtn,pagination,solveCreditsComponent,timer);
+        this.addChild(framesBtn,solveBtn,showImageBtn,backBtn,timer,pagination,solveCreditsComponent);
 
         this.addLevelsButtons(0,6);
         this.checkSolvedLevels();
