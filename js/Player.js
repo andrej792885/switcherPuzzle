@@ -14,11 +14,13 @@ this.system = this.system || {};
     p.switcherPuzzleSolvedLevels = null;
     p.solveCredits = null;
     p.solveCreditsBarLevel = null;
+    p.totalTimePlayed = null;
 
     p.init = function (stats) {
         this.switcherPuzzleSolvedLevels = stats.switcherPuzzleSolvedLevels;
         this.solveCredits = stats.solveCredits;
         this.solveCreditsBarLevel = stats.solveCreditsBarLevel;
+        this.totalTimePlayed = stats.totalTimePlayed;
     };
 
     p.levelSolved = function (level,time) {

@@ -66,7 +66,7 @@ this.system = this.system || {};
     };
 
     p.updateBestTimeTxt = function (time) {
-        this._bestTimeTxt.text = "Best time: " + time;
+        this._bestTimeTxt.text = time;
     };
 
     p.enableClick = function (bool) {

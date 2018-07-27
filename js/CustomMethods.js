@@ -75,5 +75,22 @@ this.system = this.system || {};
         return arr;
     };
 
+    CustomMethods.formatTime = function (timeInSeconds) {
+        let seconds;
+        let minutes;
+        let hours;
+        if(timeInSeconds > 3599){
+
+        }
+        if(timeInSeconds > 59){
+            seconds = timeInSeconds%60;
+            minutes = (timeInSeconds - seconds)/60;
+        }else{
+            minutes = "00";
+            seconds = timeInSeconds > 9 ? timeInSeconds : "0" + timeInSeconds;
+        }
+        return minutes + ":" + seconds;
+    };
+
     system.CustomMethods = CustomMethods;
 })();

@@ -17,6 +17,7 @@ this.system = this.system || {};
 
     p._switcherPuzzleBtn = null;
     p._switcherProgressionTxt = null;
+    p._totalTimePlayedTxt = null;
 
     MainGame.GAME_WIDTH = 0;
     MainGame.GAME_HEIGHT = 0;
@@ -44,7 +45,11 @@ this.system = this.system || {};
         switcherProgressionTxt.x = switcherPuzzleBtn.x;
         switcherProgressionTxt.y = 330;
 
-        this.addChild(switcherPuzzleBtn, switcherProgressionTxt);
+        const totalTimePlayedTxt = this._totalTimePlayedTxt = system.CustomMethods.makeText("" , "27px Russo One" , "white" , "center" , "alphabetic");
+        totalTimePlayedTxt.x = switcherPuzzleBtn.x;
+        totalTimePlayedTxt.y = 500;
+
+        this.addChild(switcherPuzzleBtn, switcherProgressionTxt , totalTimePlayedTxt);
         this.setPlayerInfo();
         this.addGame(24);
         this.showMainGameComponents(true);
@@ -67,12 +72,14 @@ this.system = this.system || {};
             stats = {
                 "switcherPuzzleSolvedLevels": {},
                 "solveCredits": 10,
-                "solveCreditsBarLevel": 0
+                "solveCreditsBarLevel": 0,
+                "totalTimePlayed":100
             };
             localStorage.setItem("playerStats" , JSON.stringify(stats));
         }
         this.player = new system.Player(stats);
         this.setProgressionTexts();
+        this.setTotalTimePlayedText();
     };
 
     p.updatePlayer = function () {
@@ -86,7 +93,8 @@ this.system = this.system || {};
         const stats = {
             "switcherPuzzleSolvedLevels": this.player.switcherPuzzleSolvedLevels,
             "solveCredits": this.player.solveCredits,
-            "solveCreditsBarLevel": this.player.solveCreditsBarLevel
+            "solveCreditsBarLevel": this.player.solveCreditsBarLevel,
+            "totalTimePlayed": this.player.totalTimePlayed
         };
         localStorage.setItem("playerStats" , JSON.stringify(stats));
     };
@@ -94,6 +102,10 @@ this.system = this.system || {};
     p.setProgressionTexts = function () {
         const switcherSolved = Object.keys(this.player.switcherPuzzleSolvedLevels).length;
         this._switcherProgressionTxt.text = "Progression: " + Math.round((100/24) * switcherSolved) + "%";//100/numLevels*solved
+    };
+
+    p.setTotalTimePlayedText = function() {
+        this._totalTimePlayedTxt.text = "Total time played: " + system.CustomMethods.formatTime(this.player.totalTimePlayed);
     };
 
     p.updateProgression = function () {

@@ -60,11 +60,7 @@ this.system = this.system || {};
     };
 
     p.updateCreditsTxt = function () {
-        createjs.Tween.get(this.creditsTxt).to({alpha:0},300).call(()=> {
-            this.creditsTxt.text = "X " + this.numOfCredits;
-            createjs.Tween.get(this.creditsTxt).to({alpha:1},300);
-        });
-
+        this.creditsTxt.text = "X " + this.numOfCredits;
     };
 
     p.updateBar = function () {
