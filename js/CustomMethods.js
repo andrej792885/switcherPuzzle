@@ -76,20 +76,19 @@ this.system = this.system || {};
     };
 
     CustomMethods.formatTime = function (timeInSeconds) {
-        let seconds;
-        let minutes;
-        let hours;
-        if(timeInSeconds > 3599){
+        let secondsLeft = timeInSeconds;
 
-        }
-        if(timeInSeconds > 59){
-            seconds = timeInSeconds%60;
-            minutes = (timeInSeconds - seconds)/60;
-        }else{
-            minutes = "00";
-            seconds = timeInSeconds > 9 ? timeInSeconds : "0" + timeInSeconds;
-        }
-        return minutes + ":" + seconds;
+        let hours = Math.floor(timeInSeconds/3600);
+        secondsLeft -= (hours * 3600);
+
+        let minutes = Math.floor(secondsLeft/60);
+        secondsLeft -= (minutes * 60);
+
+        hours = hours < 10 ? `0${hours}` : hours;
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        secondsLeft = secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft;
+
+        return `${hours} : ${minutes} : ${secondsLeft}`;
     };
 
     system.CustomMethods = CustomMethods;

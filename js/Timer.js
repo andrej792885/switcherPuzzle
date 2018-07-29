@@ -42,6 +42,7 @@ this.system = this.system || {};
     };
 
     p.stopTimer = function () {
+        console.log("stop timer");
         clearInterval(this._interval);
         this._interval = null;
         this.show(false);
@@ -49,19 +50,6 @@ this.system = this.system || {};
 
     p.takeTime = function () {
         return this._seconds + (this._minutes * 60);
-    };
-
-    p.formatTime = function (timeInSeconds) {
-        let seconds;
-        let minutes;
-        if(timeInSeconds > 59){
-            seconds = timeInSeconds%60;
-            minutes = (timeInSeconds - seconds)/60;
-        }else{
-            minutes = "00";
-            seconds = timeInSeconds > 9 ? timeInSeconds : "0" + timeInSeconds;
-        }
-        return minutes + ":" + seconds;
     };
 
     p.reset = function () {

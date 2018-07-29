@@ -68,7 +68,8 @@ this.system = this.system || {};
 
             if(solvedLevels.hasOwnProperty(num)){ // addSticker se poziva ovde posto paginacija sklanja sve dugmice
                 levelBtn.showSticker(true);
-                levelBtn.updateBestTimeTxt(this.timer.formatTime(solvedLevels[num]));
+                //levelBtn.updateBestTimeTxt(this.timer.formatTime(solvedLevels[num]));
+                levelBtn.updateBestTimeTxt(system.CustomMethods.formatTime(solvedLevels[num]));
             }else{
                 levelBtn.showSticker(false);
                 levelBtn.updateBestTimeTxt("");

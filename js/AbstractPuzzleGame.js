@@ -147,7 +147,13 @@ this.system = this.system || {};
 
     p.onBackBtn = function () {
         if(this._puzzleIsLoaded){
+            console.log("BAKC");
             this.timer.stopTimer();
+
+            this.mainGame.player.updateTotalTimePlayed(this.timer.takeTime()); // problem je sto kada se predje nivo uradi dva puta update
+            this.mainGame.updateTotalTimePlayedTxt();
+            this.mainGame.updateLocalStorage();
+
             this.timer.reset();
             this.board.removeFields();
             this.hideBoard();
@@ -173,7 +179,8 @@ this.system = this.system || {};
             const arrToCheck = this.gameName.toLowerCase() + "PuzzleSolvedLevels";
             if(this.mainGame.player[arrToCheck].hasOwnProperty(button.name)){
                 button.showSticker(true);
-                button.updateBestTimeTxt(this.timer.formatTime(this.mainGame.player[arrToCheck][button.name]));
+                //button.updateBestTimeTxt(this.timer.formatTime(this.mainGame.player[arrToCheck][button.name]));
+                button.updateBestTimeTxt(system.CustomMethods.formatTime(this.mainGame.player[arrToCheck][button.name]));
             }else{
                 button.updateBestTimeTxt("");
             }

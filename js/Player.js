@@ -31,6 +31,11 @@ this.system = this.system || {};
                 this.switcherPuzzleSolvedLevels[level] = time;
             }
         }
+        this.updateTotalTimePlayed(time);
+    };
+
+    p.updateTotalTimePlayed = function(seconds) {
+        this.totalTimePlayed += seconds;
     };
 
     p.updateSolveCredits = function (credits,barLevel) {
