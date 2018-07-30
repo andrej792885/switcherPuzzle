@@ -42,9 +42,7 @@ this.system = this.system || {};
         infoTxt.x = 201;
         infoTxt.y = 30;
 
-        let test = new createjs.Shape(new createjs.Graphics().beginFill("#30ff50").drawRoundRect(0,0,480,40));
-
-        this.addChild(frame,bar,credits,infoTxt,test);
+        this.addChild(frame,bar,credits,infoTxt);
         this.cache(0,0,480,40); // todo ovde
     };
 
