@@ -147,10 +147,9 @@ this.system = this.system || {};
 
     p.onBackBtn = function () {
         if(this._puzzleIsLoaded){
-            console.log("BAKC");
             this.timer.stopTimer();
 
-            this.mainGame.player.updateTotalTimePlayed(this.timer.takeTime()); // problem je sto kada se predje nivo uradi dva puta update
+            this.mainGame.player.updateTotalTimePlayed(this.timer.takeTime());
             this.mainGame.updateTotalTimePlayedTxt();
             this.mainGame.updateLocalStorage();
 

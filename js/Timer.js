@@ -42,10 +42,12 @@ this.system = this.system || {};
     };
 
     p.stopTimer = function () {
-        console.log("stop timer");
-        clearInterval(this._interval);
-        this._interval = null;
-        this.show(false);
+        if(this._interval){
+            console.log("clear interval");
+            clearInterval(this._interval);
+            this._interval = null;
+            this.show(false);
+        }
     };
 
     p.takeTime = function () {

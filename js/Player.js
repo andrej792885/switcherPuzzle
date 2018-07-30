@@ -31,7 +31,6 @@ this.system = this.system || {};
                 this.switcherPuzzleSolvedLevels[level] = time;
             }
         }
-        this.updateTotalTimePlayed(time);
     };
 
     p.updateTotalTimePlayed = function(seconds) {

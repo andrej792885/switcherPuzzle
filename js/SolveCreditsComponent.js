@@ -42,8 +42,10 @@ this.system = this.system || {};
         infoTxt.x = 201;
         infoTxt.y = 30;
 
-        this.addChild(frame,bar,credits,infoTxt);
-        this.cache(0,0,480,40);
+        let test = new createjs.Shape(new createjs.Graphics().beginFill("#30ff50").drawRoundRect(0,0,480,40));
+
+        this.addChild(frame,bar,credits,infoTxt,test);
+        this.cache(0,0,480,40); // todo ovde
     };
 
     p.levelSolved = function () {
@@ -67,9 +69,12 @@ this.system = this.system || {};
         const scale = 0.25 * this.barLevel;
         createjs.Tween.get(this.bar).to({scaleX:scale},300).call(()=> {
             if(scale === 1){
-                createjs.Tween.get(this.bar).to({scaleX:0},300);
+                createjs.Tween.get(this.bar).to({scaleX:0},300).call(()=>{
+                    this.cache(0,0,480,40);
+                })
+            }else{
+                this.cache(0,0,480,40);
             }
-            this.cache(0,0,480,40);
         });
     };
 
