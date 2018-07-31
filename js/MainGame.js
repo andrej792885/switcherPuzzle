@@ -49,6 +49,10 @@ this.system = this.system || {};
         totalTimePlayedTxt.x = switcherPuzzleBtn.x;
         totalTimePlayedTxt.y = 500;
 
+/*        this.fps = system.CustomMethods.makeText("","27px Russo One" , "white" , "center" , "alphabetic");
+        this.fps.x = 50;
+        this.fps.y = 50;*/
+
         this.addChild(switcherPuzzleBtn, switcherProgressionTxt , totalTimePlayedTxt);
         this.setPlayerInfo();
         this.addGame(24);
@@ -112,6 +116,7 @@ this.system = this.system || {};
 
     p.render = function(e){
         stage.update(e);
+        //this.fps.text = Math.round(createjs.Ticker.getMeasuredFPS());
     };
 
     system.MainGame = createjs.promote(MainGame,"Container");

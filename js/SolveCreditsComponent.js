@@ -25,11 +25,13 @@ this.system = this.system || {};
 
         const frame = new createjs.Shape(new createjs.Graphics().setStrokeStyle(4).beginStroke("#8d3bff").drawRoundRect (0, 0, 402, 40, 6));
         frame.mouseEnabled = false;
+        frame.snapToPixel = true;
         //frame.cache(0,0,402,40);
 
         const bar = this.bar = new createjs.Shape(new createjs.Graphics().beginFill("#7dc1ff").drawRoundRect(0,0,387,27,6));
         bar.x = 7;
         bar.y = 7;
+        bar.snapToPixel = true;
         bar.mouseEnabled = false;
         bar.scaleX = 0.25 * this.barLevel;
         //bar.cache(0,0,387,27);
@@ -43,7 +45,7 @@ this.system = this.system || {};
         infoTxt.y = 30;
 
         this.addChild(frame,bar,credits,infoTxt);
-        this.cache(0,0,480,40); // todo ovde
+        this.cache(-6,-6,500,52);
     };
 
     p.levelSolved = function () {
@@ -68,10 +70,10 @@ this.system = this.system || {};
         createjs.Tween.get(this.bar).to({scaleX:scale},300).call(()=> {
             if(scale === 1){
                 createjs.Tween.get(this.bar).to({scaleX:0},300).call(()=>{
-                    this.cache(0,0,480,40);
+                    this.cache(-6,-6,500,52);
                 })
             }else{
-                this.cache(0,0,480,40);
+                this.cache(-6,-6,500,52);
             }
         });
     };

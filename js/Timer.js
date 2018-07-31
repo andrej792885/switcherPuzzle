@@ -20,7 +20,7 @@ this.system = this.system || {};
 
 
     p.initTimer = function () {
-        const text = this._timerTxt = system.CustomMethods.makeText("00:00","36px Russo One","white" , "center" , "alphabetic");
+        const text = this._timerTxt = system.CustomMethods.makeText("00:00","32px Russo One","white" , "center" , "alphabetic");
         this.addChild(text);
         this.show(false);
     };

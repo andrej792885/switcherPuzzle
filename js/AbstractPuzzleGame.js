@@ -98,7 +98,7 @@ this.system = this.system || {};
 
         const timer = this.timer = new system.Timer();
         timer.x = 640;
-        timer.y = 36;
+        timer.y = 28;
 
         this.addChild(framesBtn,solveBtn,showImageBtn,backBtn,timer,pagination,solveCreditsComponent);
 

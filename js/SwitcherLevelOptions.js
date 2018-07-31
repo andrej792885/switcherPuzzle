@@ -23,10 +23,10 @@ this.system = this.system || {};
                 mainImage:"switcher"
             },
             level2:{
-                rows:5,
-                columns:5,
-                fieldWidth:214,
-                fieldHeight:121,
+                rows:3,
+                columns:4,
+                fieldWidth:268,
+                fieldHeight:201,
                 mainImage:"switcher2"
             },
             level3:{
@@ -37,115 +37,115 @@ this.system = this.system || {};
                 mainImage:"switcher3"
             },
             level4:{
-                rows:6,
-                columns:8,
-                fieldWidth:134,
-                fieldHeight:100,
+                rows:5,
+                columns:5,
+                fieldWidth:214,
+                fieldHeight:121,
                 mainImage:"switcher4"
             },
             level5:{
-                rows:2,
-                columns:16,
-                fieldWidth:67,
-                fieldHeight:302,
+                rows:5,
+                columns:5,
+                fieldWidth:214,
+                fieldHeight:121,
                 mainImage:"switcher5"
             },
             level6:{
-                rows:15,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:40,
+                rows:5,
+                columns:5,
+                fieldWidth:214,
+                fieldHeight:121,
                 mainImage:"switcher6"
             },
             level7:{
                 rows:5,//
-                columns:5,///
-                fieldWidth:214,
+                columns:6,///
+                fieldWidth:178,
                 fieldHeight:121,
                 mainImage:"switcher7"
             },
             level8:{
-                rows:5,
-                columns:5,
-                fieldWidth:214,
+                rows:5,//
+                columns:6,///
+                fieldWidth:178,
                 fieldHeight:121,
                 mainImage:"switcher8"
             },
             level9:{
-                rows:6,
-                columns:8,
-                fieldWidth:134,
-                fieldHeight:100,
+                rows:5,//
+                columns:6,///
+                fieldWidth:178,
+                fieldHeight:121,
                 mainImage:"switcher9"
             },
             level10:{
                 rows:6,
-                columns:8,
-                fieldWidth:134,
+                columns:5,
+                fieldWidth:214,
                 fieldHeight:106,
                 mainImage:"switcher10"
             },
             level11:{
-                rows:4,
-                columns:16,
-                fieldWidth:67,
-                fieldHeight:151,
+                rows:6,
+                columns:5,
+                fieldWidth:214,
+                fieldHeight:101,
                 mainImage:"switcher11"
             },
             level12:{//
-                rows:10,
-                columns:4,
-                fieldWidth:268,
-                fieldHeight:60,
+                rows:6,
+                columns:5,
+                fieldWidth:214,
+                fieldHeight:100,
                 mainImage:"switcher12"
             },
             level13:{
                 rows:6,
-                columns:4,
-                fieldWidth:268,
+                columns:6,
+                fieldWidth:178,
                 fieldHeight:101,
                 mainImage:"switcher13"
             },
             level14:{
-                rows:5,
-                columns:8,
-                fieldWidth:134,
-                fieldHeight:121,
+                rows:6,
+                columns:6,
+                fieldWidth:178,
+                fieldHeight:101,
                 mainImage:"switcher14"
             },
             level15:{
-                rows:9,
-                columns:5,
-                fieldWidth:214,
-                fieldHeight:67,
+                rows:6,
+                columns:6,
+                fieldWidth:178,
+                fieldHeight:101,
                 mainImage:"switcher15"
             },
             level16:{
                 rows:6,
-                columns:8,
-                fieldWidth:134,
+                columns:6,
+                fieldWidth:178,
                 fieldHeight:100,
                 mainImage:"switcher16"
             },
             level17:{
-                rows:4,
-                columns:10,
-                fieldWidth:107,
-                fieldHeight:151,
+                rows:6,
+                columns:6,
+                fieldWidth:178,
+                fieldHeight:101,
                 mainImage:"switcher17"
             },
             level18:{
-                rows:15,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:40,
+                rows:6,
+                columns:6,
+                fieldWidth:178,
+                fieldHeight:100,
                 mainImage:"switcher18"
             },
             level19:{
-                rows:10,
-                columns:5,
-                fieldWidth:214,
-                fieldHeight:60,
+                rows:5,
+                columns:8,
+                fieldWidth:134,
+                fieldHeight:120,
                 mainImage:"switcher19"
             },
             level20:{
@@ -157,30 +157,30 @@ this.system = this.system || {};
             },
             level21:{
                 rows:5,
-                columns:10,
-                fieldWidth:107,
+                columns:8,
+                fieldWidth:134,
                 fieldHeight:120,
                 mainImage:"switcher21"
             },
             level22:{
-                rows:6,
-                columns:8,
-                fieldWidth:134,
-                fieldHeight:100,
+                rows:10,
+                columns:4,
+                fieldWidth:268,
+                fieldHeight:60,
                 mainImage:"switcher22"
             },
             level23:{//////////////////////////////
-                rows:2,
-                columns:16,
-                fieldWidth:67,
-                fieldHeight:300,
+                rows:10,
+                columns:4,
+                fieldWidth:268,
+                fieldHeight:60,
                 mainImage:"switcher23"
             },
             level24:{
-                rows:15,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:40,
+                rows:10,
+                columns:4,
+                fieldWidth:268,
+                fieldHeight:60,
                 mainImage:"switcher24"
             }
         }
