@@ -224,6 +224,48 @@ this.system = this.system || {};
                 fieldWidth:357,
                 fieldHeight:40,
                 mainImage:"switcher30"
+            },
+            level31:{
+                rows:15,
+                columns:2,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher31"
+            },
+            level32:{
+                rows:15,
+                columns:3,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher32"
+            },
+            level33:{
+                rows:15,
+                columns:3,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher33"
+            },
+            level34:{
+                rows:15,
+                columns:3,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher34"
+            },
+            level35:{
+                rows:15,
+                columns:3,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher35"
+            },
+            level36:{
+                rows:15,
+                columns:3,
+                fieldWidth:357,
+                fieldHeight:40,
+                mainImage:"switcher36"
             }
         }
     };
