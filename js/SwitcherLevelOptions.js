@@ -226,45 +226,45 @@ this.system = this.system || {};
                 mainImage:"switcher30"
             },
             level31:{
-                rows:15,
-                columns:2,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher31"
             },
             level32:{
-                rows:15,
-                columns:3,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher32"
             },
             level33:{
-                rows:15,
-                columns:3,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher33"
             },
             level34:{
-                rows:15,
-                columns:3,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:21,
+                columns:2,
+                fieldWidth:536,
+                fieldHeight:29,
                 mainImage:"switcher34"
             },
             level35:{
-                rows:15,
-                columns:3,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:21,
+                columns:2,
+                fieldWidth:536,
+                fieldHeight:29,
                 mainImage:"switcher35"
             },
             level36:{
-                rows:15,
-                columns:3,
-                fieldWidth:357,
-                fieldHeight:40,
+                rows:21,
+                columns:2,
+                fieldWidth:536,
+                fieldHeight:29,
                 mainImage:"switcher36"
             }
         }
