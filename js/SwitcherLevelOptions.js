@@ -247,24 +247,24 @@ this.system = this.system || {};
                 mainImage:"switcher33"
             },
             level34:{
-                rows:21,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:29,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher34"
             },
             level35:{
-                rows:21,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:29,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher35"
             },
             level36:{
-                rows:21,
-                columns:2,
-                fieldWidth:536,
-                fieldHeight:29,
+                rows:2,
+                columns:21,
+                fieldWidth:51,
+                fieldHeight:300,
                 mainImage:"switcher36"
             }
         }
