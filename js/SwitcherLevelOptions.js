@@ -266,6 +266,69 @@ this.system = this.system || {};
                 fieldWidth:51,
                 fieldHeight:300,
                 mainImage:"switcher36"
+            },
+            level37:{
+                rows:6,
+                columns:8,
+                fieldWidth:134,
+                fieldHeight:101,
+                mainImage:"switcher37"
+            },
+            level38:{
+                rows:6,
+                columns:8,
+                fieldWidth:134,
+                fieldHeight:101,
+                mainImage:"switcher38"
+            },
+            level39:{
+                rows:6,
+                columns:8,
+                fieldWidth:134,
+                fieldHeight:101,
+                mainImage:"switcher39"
+            },
+            level40:{
+                rows:8,
+                columns:6,
+                fieldWidth:179,
+                fieldHeight:76,
+                mainImage:"switcher40"
+            },
+            level41:{
+                rows:8,
+                columns:6,
+                fieldWidth:179,
+                fieldHeight:76,
+                mainImage:"switcher41"
+            },
+            level42:{
+                rows:8,
+                columns:6,
+                fieldWidth:179,
+                fieldHeight:76,
+                mainImage:"switcher42"
+            },
+            level43:{
+                rows:7,
+                columns:8,
+                fieldWidth:134,
+                fieldHeight:87,
+                mainImage:"switcher43"
+            },
+            level44:{
+                rows:8,
+                columns:6,
+                fieldWidth:179,
+                fieldHeight:76,
+                mainImage:"switcher44"
+            },
+            level45:{
+                rows:8,
+                columns:6,
+                fieldWidth:179,
+                fieldHeight:76,
+                mainImage:"switcher45"
             }
         }
     };
