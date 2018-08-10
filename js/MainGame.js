@@ -23,8 +23,8 @@ this.system = this.system || {};
     MainGame.GAME_HEIGHT = 0;
 
     p.init = function () {
-        MainGame.GAME_WIDTH = 1280;
-        MainGame.GAME_HEIGHT = 720;
+        MainGame.GAME_WIDTH = 1920;
+        MainGame.GAME_HEIGHT = 1080;
         const back = system.CustomMethods.makeImage("background" , false);
         this.addChild(back);
 
