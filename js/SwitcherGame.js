@@ -17,7 +17,7 @@ this.system = this.system || {};
 
     p.addLevelsButtons = function (from,to) {
         console.log("adding buttons");
-        const solvedLevels = this.mainGame.player.switcherPuzzleSolvedLevels;
+        //const solvedLevels = this.mainGame.player.switcherPuzzleSolvedLevels;
         const levelsBtns = this.levelsBtns = new createjs.Container();
 
         for(let i = from; i < to; i++){
@@ -29,10 +29,10 @@ this.system = this.system || {};
             const firstEnd = from + 3;//9
 
             if(i >= firstEnd){//second row
-                levelBtn.x = (i - firstEnd) * 389;
-                levelBtn.y = 268;
+                levelBtn.x = (i - firstEnd) * 600;
+                levelBtn.y = 400;
             }else{//first row
-                levelBtn.x = (i - from) * 389;//6
+                levelBtn.x = (i - from) * 600;//6
             }
 
             levelBtn.name = num;
@@ -48,8 +48,8 @@ this.system = this.system || {};
             this.levelsBtns.visible = false;
         });
 
-        levelsBtns.x = 270;
-        levelsBtns.y = 134;
+        levelsBtns.x = 400;
+        levelsBtns.y = 200;
 
         this.addChild(levelsBtns);
     };
