@@ -55,7 +55,7 @@ this.system = this.system || {};
 
         this.addChild(switcherPuzzleBtn, switcherProgressionTxt , totalTimePlayedTxt);
         this.setPlayerInfo();
-        this.addGame(42);
+        this.addGame(60);
         this.showMainGameComponents(true);
     };
 
@@ -111,7 +111,7 @@ this.system = this.system || {};
 
     p.updateProgressionTxt = function () {
         const numberOfSolvedLevels = Object.keys(this.player.switcherPuzzleSolvedLevels).length;
-        this._switcherProgressionTxt.text = "Progression: " + Math.round((100/42) * numberOfSolvedLevels) + "%";//100/numLevels*solved
+        this._switcherProgressionTxt.text = "Progression: " + Math.round((100/60) * numberOfSolvedLevels) + "%";//100/numLevels*solved
     };
 
     p.render = function(e){
