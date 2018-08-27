@@ -102,43 +102,43 @@ this.system = this.system || {};
             level13:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:101,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher13"
             },
             level14:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:101,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher14"
             },
             level15:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:101,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher15"
             },
             level16:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:100,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher16"
             },
             level17:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:101,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher17"
             },
             level18:{
                 rows:6,
                 columns:6,
-                fieldWidth:178,
-                fieldHeight:100,
+                fieldWidth:267,
+                fieldHeight:150,
                 mainImage:"switcher18"
             },
             level19:{
