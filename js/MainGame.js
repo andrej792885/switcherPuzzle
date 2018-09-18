@@ -14,10 +14,14 @@ this.system = this.system || {};
     const p = createjs.extend(MainGame,createjs.Container);
     p.game = null;
     p.player = null;
+    p.background = null;
 
-    p._switcherPuzzleBtn = null;
+    p._playBtn = null;
+    p._optionsBtn = null;
+    p._options = null;
     p._switcherProgressionTxt = null;
     p._totalTimePlayedTxt = null;
+    p._logo = null;
 
     MainGame.GAME_WIDTH = 0;
     MainGame.GAME_HEIGHT = 0;
@@ -25,43 +29,58 @@ this.system = this.system || {};
     p.init = function () {
         MainGame.GAME_WIDTH = 1920;
         MainGame.GAME_HEIGHT = 1080;
-        const back = system.CustomMethods.makeImage("background" , false);
+        const back = this.background = system.CustomMethods.makeImage("background1" , false);
         this.addChild(back);
 
-        const img = system.CustomMethods.makeImage("switcherBtn" , false);
-        const switcherPuzzleBtn = this._switcherPuzzleBtn = new system.ImageButton(img);
+        const logo = this._logo = system.CustomMethods.makeImage("logo" , false);
+        logo.x = (MainGame.GAME_WIDTH/2) - logo.image.width/2;
+        logo.y = 50;
 
-        const hit = new createjs.Shape();
-        hit.graphics.beginFill("#000").drawRect(0, 0, img.image.width, img.image.height);
-        hit.regX = img.image.width/2;
-        switcherPuzzleBtn.hitArea = hit;
-        switcherPuzzleBtn.x = 640;
-        switcherPuzzleBtn.y = 50;
-        switcherPuzzleBtn.addEventListener("click" , (e)=>{
+        const img = system.CustomMethods.makeImage("playButton" , true);
+        const playBtn = this._playBtn = new system.ImageButton(img);
+        playBtn.x = (MainGame.GAME_WIDTH/2);
+        playBtn.y = 400;
+        playBtn.addEventListener("click" , (e)=>{
             this.showMainGameComponents(false);
         });
 
+        const img2 = system.CustomMethods.makeImage("optionsButton" , true);
+        const optionsBtn = this._optionsBtn = new system.ImageButton(img2);
+        optionsBtn.x = playBtn.x;
+        optionsBtn.y = 500;
+        optionsBtn.addEventListener("click" , (e)=>{
+            options.visible = !options.visible;
+        });
+
+        const options = this._options = new system.Options(this.background);
+        options.x = 766;
+        options.y = 600;
+
+
         const switcherProgressionTxt = this._switcherProgressionTxt = system.CustomMethods.makeText("" , "27px Russo One" , "white" , "center" , "alphabetic");
-        switcherProgressionTxt.x = switcherPuzzleBtn.x;
-        switcherProgressionTxt.y = 330;
+        switcherProgressionTxt.x = playBtn.x;
+        switcherProgressionTxt.y = 950;
 
         const totalTimePlayedTxt = this._totalTimePlayedTxt = system.CustomMethods.makeText("" , "27px Russo One" , "white" , "center" , "alphabetic");
-        totalTimePlayedTxt.x = switcherPuzzleBtn.x;
-        totalTimePlayedTxt.y = 500;
+        totalTimePlayedTxt.x = playBtn.x;
+        totalTimePlayedTxt.y = 1000;
 
 /*        this.fps = system.CustomMethods.makeText("","27px Russo One" , "white" , "center" , "alphabetic");
         this.fps.x = 50;
         this.fps.y = 50;*/
 
-        this.addChild(switcherPuzzleBtn, switcherProgressionTxt , totalTimePlayedTxt);
+        this.addChild(logo , playBtn , optionsBtn, switcherProgressionTxt , totalTimePlayedTxt , options);
         this.setPlayerInfo();
         this.addGame(60);
         this.showMainGameComponents(true);
     };
 
     p.showMainGameComponents = function (bool) {
-        this._switcherPuzzleBtn.visible =
-        this._switcherProgressionTxt.visible = bool;
+        this._options.visible = false;
+        this._logo.visible =
+        this._playBtn.visible =
+        this._optionsBtn.visible =
+        this._switcherProgressionTxt.visible =
         this._totalTimePlayedTxt.visible = bool;
         this.game.visible = !bool;
     };

@@ -54,6 +54,7 @@ this.system = this.system || {};
     };
 
     p.onChoose = function(e) {
+        system.CustomMethods.playSound("switch");
         const child = e.target.parent.name;
         const field = this.getChildByName(child);
         field.selectField();

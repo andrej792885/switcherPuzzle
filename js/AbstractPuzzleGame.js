@@ -51,8 +51,9 @@ this.system = this.system || {};
         const framesBtn = this.framesBtn = new system.ImageButton(img);
         framesBtn.hitArea = hit;
         framesBtn.x = 51;
-        framesBtn.y = 310;
+        framesBtn.y = 410;
         framesBtn.on("click",(event)=>{
+            system.CustomMethods.playSound("click");
             this.board.showHideFrames();
         });
 
@@ -61,7 +62,7 @@ this.system = this.system || {};
         const showImageBtn = this.showImageBtn = new system.ImageButton(img);
         showImageBtn.hitArea = hit;
         showImageBtn.x = 51;
-        showImageBtn.y = 100;
+        showImageBtn.y = 200;
         showImageBtn.on("click",(event)=>{
             this.onShowImageBtn();
         });
@@ -70,35 +71,36 @@ this.system = this.system || {};
         img = system.CustomMethods.makeImage("solveButton" , true);
         const solveBtn = this.solveBtn = new system.ImageButton(img);
         solveBtn.hitArea = hit;
-        solveBtn.x = 1228;
-        solveBtn.y = 310;
+        solveBtn.x = 51;
+        solveBtn.y = 600;
         solveBtn.on("click",(event)=>{
+            system.CustomMethods.playSound("click");
             this.solveCreditsComponent.numOfCredits--;
             this.solveCreditsComponent.updateCreditsTxt();
             this.board.solvePuzzle();
         });
 
         const solveCreditsComponent = this.solveCreditsComponent = new system.SolveCreditsComponent(this);
-        solveCreditsComponent.x = 442;
-        solveCreditsComponent.y = 677;
+        solveCreditsComponent.x = 750;
+        solveCreditsComponent.y = 1030;
 
         img = system.CustomMethods.makeImage("backBtn" , true);
         const backBtn = this.backBtn = new system.ImageButton(img);
         backBtn.hitArea = hit;
         backBtn.x = 51;
-        backBtn.y = 500;
+        backBtn.y = 800;
         backBtn.on("click",(event)=>{
             this.onBackBtn();
         });
 
         const pages = Math.ceil(this.numberOfLevels/6); // 6 = buttons per page
         const pagination = this.paginationComponent = new system.PaginationComponent(pages,this);
-        pagination.x = 555;
+        pagination.x = 900;
         pagination.y = 7;
 
         const timer = this.timer = new system.Timer();
-        timer.x = 640;
-        timer.y = 28;
+        timer.x = 1820;
+        timer.y = 36;
 
         this.addChild(framesBtn,solveBtn,showImageBtn,backBtn,timer,pagination,solveCreditsComponent);
 
@@ -146,6 +148,7 @@ this.system = this.system || {};
     };
 
     p.onBackBtn = function () {
+        system.CustomMethods.playSound("click");
         if(this._puzzleIsLoaded){
             this.timer.stopTimer();
 
@@ -187,6 +190,7 @@ this.system = this.system || {};
     };
 
     p.levelSolved = function () {
+        system.CustomMethods.playSound("complete");
         this.timer.stopTimer();
         this.solveBtn.enableClick(false);
         this.framesBtn.enableClick(false);
@@ -214,6 +218,7 @@ this.system = this.system || {};
 
     // method with functionality of just once viewing solved image
     p.onShowImageBtn = function () {
+        system.CustomMethods.playSound("click");
         this.showImageBtn.enableClick(false);
         const yPos = this.solvedImage.y === this.board.y ? -(this.solvedImage.image.height) : this.board.y;
         const isVisible = yPos > 0;

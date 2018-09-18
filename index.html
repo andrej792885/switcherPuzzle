@@ -5,10 +5,11 @@
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="createjs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="js/CustomMethods.js"></script>
     <script src="js/MainGame.js"></script>
     <script src="js/Player.js"></script>
+    <script src="js/Options.js"></script>
     <script src="js/SolveCreditsComponent.js"></script>
     <script src="js/PaginationComponent.js"></script>
     <script src="js/AbstractPuzzleGame.js"></script>
@@ -62,9 +63,23 @@
             queue.on("complete", loadComplete);
             queue.on("progress", handleProgress);
             queue.loadManifest([
-                {id: "background", src:"assets/gameComponents/backgrounds/background.jpg"},
+                {id: "background1", src:"assets/gameComponents/backgrounds/background1.jpg"},
+                {id: "background2", src:"assets/gameComponents/backgrounds/background2.jpg"},
+                {id: "background3", src:"assets/gameComponents/backgrounds/background3.jpg"},
+                {id: "background4", src:"assets/gameComponents/backgrounds/background4.jpg"},
+                {id: "background5", src:"assets/gameComponents/backgrounds/background5.jpg"},
+                {id: "b1", src:"assets/gameComponents/options/b1.png"},
+                {id: "b2", src:"assets/gameComponents/options/b2.png"},
+                {id: "b3", src:"assets/gameComponents/options/b3.png"},
+                {id: "b4", src:"assets/gameComponents/options/b4.png"},
+                {id: "b5", src:"assets/gameComponents/options/b5.png"},
+                {id: "soundOn", src:"assets/gameComponents/options/soundOn.png"},
+                {id: "soundOff", src:"assets/gameComponents/options/soundOff.png"},
+                {id: "optionsBackground", src:"assets/gameComponents/options/optionsBackground.png"},
+                {id: "playButton", src:"assets/gameComponents/playButton.png"},
+                {id: "optionsButton", src:"assets/gameComponents/optionsButton.png"},
                 {id: "solved", src:"assets/gameComponents/solved.png"},
-                {id: "switcherBtn", src:"assets/gameComponents/switcher.png"},
+                {id: "logo", src:"assets/gameComponents/logo.png"},
                 {id: "paginationBack", src:"assets/gameComponents/paginationBackground.png"},
                 {id: "leftBtn", src:"assets/gameComponents/left.png"},
                 {id: "rightBtn", src:"assets/gameComponents/right.png"},
@@ -72,6 +87,9 @@
                 {id: "showImgButton", src:"assets/gameComponents/showImgButton.png"},
                 {id: "showFramesButton", src:"assets/gameComponents/showFramesButton.png"},
                 {id: "solveButton", src:"assets/gameComponents/solveButton.png"},
+                {id: "click", src:"assets/sounds/click.ogg"},
+                {id: "complete", src:"assets/sounds/complete.ogg"},
+                {id: "switch", src:"assets/sounds/switch.ogg"},
 
                 {id: "switcher", src:"assets/images/switcher.jpg"},
                 {id: "switcher2", src:"assets/images/switcher2.jpeg"},
